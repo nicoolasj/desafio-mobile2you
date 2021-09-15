@@ -4,6 +4,6 @@ import com.desafio.mobile2you.data.model.movie.Movie
 import com.desafio.mobile2you.data.model.similarmovies.SimilarMovies
 
 interface MovieRepository {
-    suspend fun getMovie(): Movie
-    suspend fun getSimilarMovies(): SimilarMovies
+    suspend fun getMovie(movieId: String): Movie
+    suspend fun getSimilarMovies(movieId: String): SimilarMovies
 }
