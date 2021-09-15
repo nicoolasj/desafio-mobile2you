@@ -1,4 +1,4 @@
-package com.desafio.mobile2you.data.model
+package com.desafio.mobile2you.data.model.movie
 
 
 import com.google.gson.annotations.SerializedName
