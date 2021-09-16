@@ -5,8 +5,9 @@ import com.desafio.mobile2you.data.model.movie.Movie
 import com.desafio.mobile2you.data.model.similarmovies.SimilarMovies
 import com.desafio.mobile2you.data.repository.datasource.MovieRemoteDataSource
 import retrofit2.Response
+import javax.inject.Inject
 
-class MovieRemoteDataSourceImpl(
+class MovieRemoteDataSourceImpl @Inject constructor(
     private val tmdbService: TMDBService,
     private val movieId: String,
     private val apiKey: String,
