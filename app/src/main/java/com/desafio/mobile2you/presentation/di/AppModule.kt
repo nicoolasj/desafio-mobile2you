@@ -2,7 +2,13 @@ package com.desafio.mobile2you.presentation.di
 
 import com.desafio.mobile2you.data.api.TMDBService
 import com.desafio.mobile2you.data.repository.MovieRepositoryImpl
+import com.desafio.mobile2you.data.repository.datasource.MovieRemoteDataSource
+import com.desafio.mobile2you.data.repository.datasourceimpl.MovieRemoteDataSourceImpl
 import com.desafio.mobile2you.domain.repository.MovieRepository
+import com.desafio.mobile2you.util.Constants.API_KEY
+import com.desafio.mobile2you.util.Constants.BASE_URL
+import com.desafio.mobile2you.util.Constants.LANGUAGE
+import com.desafio.mobile2you.util.Constants.MOVIE_ID
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,12 +26,19 @@ object AppModule {
     fun provideTMDBService(): TMDBService =
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://developers.themoviedb.org/3")
+            .baseUrl(BASE_URL)
             .build()
             .create(TMDBService::class.java)
 
+    @Singleton
+    @Provides
+    fun provideMovieRemoteDataSource(
+        tmdbService: TMDBService,
+    ): MovieRemoteDataSource =
+        MovieRemoteDataSourceImpl(tmdbService, MOVIE_ID, API_KEY, LANGUAGE)
+
     @Provides
     @Singleton
-    fun provideMovieRepository(tmdbService: TMDBService): MovieRepository =
-        MovieRepositoryImpl(tmdbService)
+    fun provideMovieRepository(movieRemoteDataSource: MovieRemoteDataSource): MovieRepository =
+        MovieRepositoryImpl(movieRemoteDataSource)
 }
