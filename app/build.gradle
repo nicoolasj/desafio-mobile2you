@@ -35,7 +35,6 @@ android {
         viewBinding true
         dataBinding true
     }
-    buildConfigField "String", "API_KEY", "\"bd6a39ec98ccf79b868a85f6550fd51d\""
 }
 
 dependencies {
