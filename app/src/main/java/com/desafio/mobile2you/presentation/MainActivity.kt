@@ -1,10 +1,12 @@
 package com.desafio.mobile2you.presentation
 
+import android.graphics.Color
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -22,6 +24,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.PrivateKey
 import javax.inject.Inject
 
 private const val TAG = "MainActivity"
@@ -45,6 +48,16 @@ class MainActivity : AppCompatActivity() {
 
         displayMovie()
         displaySimilarMovies()
+
+        val sharedPref = getSharedPreferences("pref", MODE_PRIVATE)
+        binding.toggleButton.setOnCheckedChangeListener { _, isChecked ->
+                sharedPref.edit().apply {
+                    putBoolean("state", isChecked)
+                    apply()
+            }
+        }
+
+        binding.toggleButton.isChecked = sharedPref.getBoolean("state", false)
     }
 
     private fun recyclerViewInit() {
