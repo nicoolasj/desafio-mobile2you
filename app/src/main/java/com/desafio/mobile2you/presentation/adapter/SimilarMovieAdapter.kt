@@ -32,7 +32,7 @@ class SimilarMovieAdapter : RecyclerView.Adapter<SimilarMovieAdapter.ViewHolder>
                 .load("https://image.tmdb.org/t/p/original/${similarMovieList[position].posterPath}")
                 .into(imageView)
             textView.text = similarMovieList[position].title
-            textView2.text = similarMovieList[position].releaseDate
+            textView2.text = similarMovieList[position].releaseDate.substring(0,4)
         }
     }
 
