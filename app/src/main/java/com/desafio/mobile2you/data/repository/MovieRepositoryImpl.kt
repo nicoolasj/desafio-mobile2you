@@ -5,6 +5,7 @@ import com.desafio.mobile2you.data.model.movie.Movie
 import com.desafio.mobile2you.data.model.similarmovies.SimilarMovies
 import com.desafio.mobile2you.data.repository.datasource.MovieRemoteDataSource
 import com.desafio.mobile2you.domain.repository.MovieRepository
+import retrofit2.Response
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
