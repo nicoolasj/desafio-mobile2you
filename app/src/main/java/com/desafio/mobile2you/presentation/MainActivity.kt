@@ -1,8 +1,10 @@
 package com.desafio.mobile2you.presentation
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MovieViewModel
+    private lateinit var adapter: SimilarMovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +39,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = SimilarMovieAdapter()
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerViewInit()
 
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
+
+        displayMovie()
+        displaySimilarMovies()
+    }
+
+    private fun recyclerViewInit() {
+        adapter = SimilarMovieAdapter()
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun displayMovie() {
+        binding.progressBar.visibility = View.VISIBLE
         viewModel.getMovie().observe(this, {
             Log.d(TAG, "$it")
             binding.textView.text = it.title
@@ -51,7 +65,11 @@ class MainActivity : AppCompatActivity() {
             Glide.with(binding.imageView)
                 .load("https://image.tmdb.org/t/p/original/${it.posterPath}")
                 .into(binding.imageView)
+            binding.progressBar.visibility = View.INVISIBLE
         })
+    }
+
+    private fun displaySimilarMovies() {
         viewModel.getSimilarMovies().observe(this, {
             adapter.getSimilarMovieList(it)
             Log.d(TAG, "$it")
