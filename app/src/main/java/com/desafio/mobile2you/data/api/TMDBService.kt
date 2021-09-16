@@ -9,14 +9,14 @@ import retrofit2.http.Query
 
 interface TMDBService {
 
-    @GET("/movie/{movie_id}")
+    @GET("movie/{movie_id}")
     suspend fun getMovie(
         @Path("movie_id") movieId: String,
         @Query("api_key") apiKey: String,
         @Query("language") language: String
     ): Response<Movie>
 
-    @GET("/movie/{movie_id}/similar")
+    @GET("movie/{movie_id}/similar")
     suspend fun getSimilarMovies(
         @Path("movie_id") movieId: String,
         @Query("api_key") apiKey: String,
