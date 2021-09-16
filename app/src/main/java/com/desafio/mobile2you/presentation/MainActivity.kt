@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.desafio.mobile2you.R
 import com.desafio.mobile2you.data.api.TMDBService
 import com.desafio.mobile2you.data.repository.MovieRepositoryImpl
 import com.desafio.mobile2you.data.repository.datasourceimpl.MovieRemoteDataSourceImpl
 import com.desafio.mobile2you.databinding.ActivityMainBinding
+import com.desafio.mobile2you.presentation.adapter.SimilarMovieAdapter
 import com.desafio.mobile2you.presentation.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -34,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val adapter = SimilarMovieAdapter()
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
         viewModel.getMovie().observe(this, {
             Log.d(TAG, "$it")
@@ -47,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 .into(binding.imageView)
         })
         viewModel.getSimilarMovies().observe(this, {
+            adapter.getSimilarMovieList(it)
             Log.d(TAG, "$it")
         })
     }
