@@ -38,7 +38,8 @@ object AppModule {
             tmdbService,
             MOVIE_ID,
             API_KEY,
-            LANGUAGE)
+            LANGUAGE
+        )
 
     @Provides
     @Singleton

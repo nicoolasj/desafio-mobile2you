@@ -1,16 +1,10 @@
 package com.desafio.mobile2you.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
-import com.desafio.mobile2you.data.model.movie.Movie
-import com.desafio.mobile2you.domain.repository.MovieRepository
 import com.desafio.mobile2you.domain.usecase.GetMovieUseCase
 import com.desafio.mobile2you.domain.usecase.GetSimilarMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel

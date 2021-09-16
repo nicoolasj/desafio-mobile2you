@@ -1,31 +1,17 @@
 package com.desafio.mobile2you.presentation
 
-import android.graphics.Color
-import android.opengl.Visibility
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.desafio.mobile2you.R
-import com.desafio.mobile2you.data.api.TMDBService
-import com.desafio.mobile2you.data.repository.MovieRepositoryImpl
-import com.desafio.mobile2you.data.repository.datasourceimpl.MovieRemoteDataSourceImpl
 import com.desafio.mobile2you.databinding.ActivityMainBinding
 import com.desafio.mobile2you.presentation.adapter.SimilarMovieAdapter
 import com.desafio.mobile2you.presentation.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.security.PrivateKey
-import javax.inject.Inject
 
 private const val TAG = "MainActivity"
 
@@ -51,9 +37,9 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("pref", MODE_PRIVATE)
         binding.toggleButton.setOnCheckedChangeListener { _, isChecked ->
-                sharedPref.edit().apply {
-                    putBoolean("state", isChecked)
-                    apply()
+            sharedPref.edit().apply {
+                putBoolean("state", isChecked)
+                apply()
             }
         }
 
