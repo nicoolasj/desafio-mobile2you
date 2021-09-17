@@ -13,6 +13,7 @@
         <ImageView
             android:id="@+id/movie_poster"
             android:layout_width="@dimen/match_constraints"
+            android:importantForAccessibility="no"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,13 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:drawableLeft="@drawable/ic_heart"
             android:drawablePadding="@dimen/default_drawable_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_title"
-            tools:text="TextView" />
+            tools:text="TextView"
+            app:drawableLeftCompat="@drawable/ic_heart" />
 
         <TextView
             android:id="@+id/popularity_count"
@@ -55,13 +56,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bigger_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:drawableLeft="@drawable/ic_eye"
             android:drawablePadding="@dimen/default_drawable_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/like_count"
             app:layout_constraintTop_toBottomOf="@+id/movie_title"
-            tools:text="TextView" />
+            tools:text="TextView"
+            app:drawableLeftCompat="@drawable/ic_eye" />
 
         <TextView
             android:id="@+id/movie_description"
