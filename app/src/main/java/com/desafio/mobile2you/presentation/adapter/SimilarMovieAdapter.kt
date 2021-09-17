@@ -16,9 +16,9 @@ class SimilarMovieAdapter : RecyclerView.Adapter<SimilarMovieAdapter.ViewHolder>
     private var similarMovieList = emptyList<SimilarMovie>()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.imageView4)
-        val textView: TextView = view.findViewById(R.id.textView8)
-        val textView2: TextView = view.findViewById(R.id.textView9)
+        val imageView: ImageView = view.findViewById(R.id.similar_movie_poster)
+        val textView: TextView = view.findViewById(R.id.similar_movie_title)
+        val textView2: TextView = view.findViewById(R.id.similar_movie_release_year)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

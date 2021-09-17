@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/movie_poster"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/movie_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -31,12 +31,12 @@
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/toggleButton"
+            app:layout_constraintEnd_toStartOf="@+id/favorite_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/like_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -47,10 +47,10 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_title" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/popularity_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -60,11 +60,11 @@
             tools:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toEndOf="@+id/like_count"
+            app:layout_constraintTop_toBottomOf="@+id/movie_title" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/movie_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -75,10 +75,10 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/genre_names" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/genre_names"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -87,17 +87,17 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/like_count" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/similar_movies_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:nestedScrollingEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_description" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -111,7 +111,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ToggleButton
-            android:id="@+id/toggleButton"
+            android:id="@+id/favorite_button"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginTop="16dp"
@@ -120,7 +120,7 @@
             android:textOn=""
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

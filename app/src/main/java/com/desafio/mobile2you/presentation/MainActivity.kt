@@ -36,34 +36,34 @@ class MainActivity : AppCompatActivity() {
         displaySimilarMovies()
 
         val sharedPref = getSharedPreferences("pref", MODE_PRIVATE)
-        binding.toggleButton.setOnCheckedChangeListener { _, isChecked ->
+        binding.favoriteButton.setOnCheckedChangeListener { _, isChecked ->
             sharedPref.edit().apply {
                 putBoolean("state", isChecked)
                 apply()
             }
         }
 
-        binding.toggleButton.isChecked = sharedPref.getBoolean("state", false)
+        binding.favoriteButton.isChecked = sharedPref.getBoolean("state", false)
     }
 
     private fun recyclerViewInit() {
         adapter = SimilarMovieAdapter()
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.similarMoviesRecyclerView.adapter = adapter
+        binding.similarMoviesRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun displayMovie() {
         binding.progressBar.visibility = View.VISIBLE
         viewModel.getMovie().observe(this, {
             Log.d(TAG, "$it")
-            binding.textView.text = it.title
-            "${it.voteCount} Likes".also { text -> binding.textView2.text = text }
-            "${it.popularity} Watched".also { text -> binding.textView3.text = text }
-            binding.textView4.text = it.overview
-            binding.textView5.text = "${it.genres.map { genre -> genre.name }}"
-            Glide.with(binding.imageView)
+            binding.movieTitle.text = it.title
+            "${it.voteCount} Likes".also { text -> binding.likeCount.text = text }
+            "${it.popularity} Watched".also { text -> binding.popularityCount.text = text }
+            binding.movieDescription.text = it.overview
+            binding.genreNames.text = "${it.genres.map { genre -> genre.name }}"
+            Glide.with(binding.moviePoster)
                 .load("https://image.tmdb.org/t/p/original/${it.posterPath}")
-                .into(binding.imageView)
+                .into(binding.moviePoster)
             binding.progressBar.visibility = View.INVISIBLE
         })
     }
