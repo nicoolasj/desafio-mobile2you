@@ -1,38 +1,31 @@
 package com.desafio.mobile2you.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.desafio.mobile2you.R
 import com.desafio.mobile2you.data.model.similarmovies.SimilarMovie
 import com.desafio.mobile2you.data.model.similarmovies.SimilarMovies
+import com.desafio.mobile2you.databinding.ItemSimilarMovieBinding
 
 class SimilarMovieAdapter : RecyclerView.Adapter<SimilarMovieAdapter.ViewHolder>() {
 
     private var similarMovieList = emptyList<SimilarMovie>()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.similar_movie_poster)
-        val textView: TextView = view.findViewById(R.id.similar_movie_title)
-        val textView2: TextView = view.findViewById(R.id.similar_movie_release_year)
-    }
+    class ViewHolder(val binding: ItemSimilarMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_similar_movie, parent, false)
+            ItemSimilarMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder) {
-            Glide.with(imageView)
+        with(holder.binding) {
+            Glide.with(similarMoviePoster)
                 .load("https://image.tmdb.org/t/p/original/${similarMovieList[position].posterPath}")
-                .into(imageView)
-            textView.text = similarMovieList[position].title
-            textView2.text = similarMovieList[position].releaseDate.substring(0, 4)
+                .into(similarMoviePoster)
+            similarMovieTitle.text = similarMovieList[position].title
+            similarMovieReleaseYear.text = similarMovieList[position].releaseDate.substring(0, 4)
         }
     }
 
