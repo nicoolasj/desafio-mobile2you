@@ -16,16 +16,16 @@ class FakeMovieRepository : MovieRepository {
     init {
         genre.add(Genre("name"))
         movie = Movie(
-                "backdropPath",
-                genre,
-                1,
-                "overview",
-                100.0,
-                "posterPath",
-                "tagline",
-                "title",
-                1
-            )
+            "backdropPath",
+            genre,
+            1,
+            "overview",
+            100.0,
+            "posterPath",
+            "tagline",
+            "title",
+            1
+        )
         similarMovie.add(SimilarMovie("posterPath", "2000", "title"))
         similarMovies = SimilarMovies(similarMovie)
     }

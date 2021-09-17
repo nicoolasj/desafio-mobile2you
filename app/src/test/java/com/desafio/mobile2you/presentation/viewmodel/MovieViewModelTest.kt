@@ -9,13 +9,12 @@ import com.desafio.mobile2you.data.model.similarmovies.SimilarMovies
 import com.desafio.mobile2you.data.repository.datasourceimpl.FakeMovieRepository
 import com.desafio.mobile2you.domain.usecase.GetMovieUseCase
 import com.desafio.mobile2you.domain.usecase.GetSimilarMoviesUseCase
+import com.google.common.truth.Truth.assertThat
 import getOrAwaitValue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import com.google.common.truth.Truth.assertThat
-
 
 @RunWith(AndroidJUnit4::class)
 class MovieViewModelTest {
