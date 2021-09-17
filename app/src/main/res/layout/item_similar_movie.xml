@@ -9,6 +9,7 @@
         android:id="@+id/similar_movie_poster"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/similar_movie_poster_height"
+        android:importantForAccessibility="no"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_marginTop="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"
