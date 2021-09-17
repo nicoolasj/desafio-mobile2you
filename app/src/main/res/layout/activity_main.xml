@@ -12,7 +12,7 @@
 
         <ImageView
             android:id="@+id/movie_poster"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -21,78 +21,79 @@
 
         <TextView
             android:id="@+id/movie_title"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            tools:text="TextView"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/movie_title_dimen"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/favorite_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_poster"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/like_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_heart"
-            android:drawablePadding="8dp"
-            tools:text="TextView"
+            android:drawablePadding="@dimen/default_drawable_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_title" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_title"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/popularity_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/bigger_margin"
+            android:layout_marginTop="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_eye"
-            android:drawablePadding="8dp"
-            tools:text="TextView"
+            android:drawablePadding="@dimen/default_drawable_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/like_count"
-            app:layout_constraintTop_toBottomOf="@+id/movie_title" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_title"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/movie_description"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            tools:text="TextView"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/default_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genre_names" />
+            app:layout_constraintTop_toBottomOf="@+id/genre_names"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/genre_names"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            tools:text="TextView"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/small_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/like_count" />
+            app:layout_constraintTop_toBottomOf="@+id/like_count"
+            tools:text="TextView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/similar_movies_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/default_margin"
             android:nestedScrollingEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,13 +113,13 @@
 
         <ToggleButton
             android:id="@+id/favorite_button"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="@dimen/heart_toggle_dimen"
+            android:layout_height="@dimen/heart_toggle_dimen"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
             android:background="@drawable/toggle_selector"
             android:textOff=""
             android:textOn=""
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
     </androidx.constraintlayout.widget.ConstraintLayout>
