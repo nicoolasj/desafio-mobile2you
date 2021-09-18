@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.desafio.mobile2you.R
+import com.desafio.mobile2you.data.model.movie.Movie
 import com.desafio.mobile2you.databinding.ActivityMainBinding
 import com.desafio.mobile2you.presentation.adapter.SimilarMovieAdapter
 import com.desafio.mobile2you.presentation.viewmodel.MovieViewModel
@@ -28,8 +29,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerViewInit()
-
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
         displayMovie()
@@ -46,29 +45,34 @@ class MainActivity : AppCompatActivity() {
         binding.favoriteButton.isChecked = sharedPref.getBoolean("state", false)
     }
 
-    private fun recyclerViewInit() {
+    private fun similarMoviesRecyclerViewInit() {
         adapter = SimilarMovieAdapter()
         binding.similarMoviesRecyclerView.adapter = adapter
         binding.similarMoviesRecyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun bindMovie(movie: Movie) {
+        binding.movieTitle.text = movie.title
+        binding.likeCount.text = getString(R.string.like_count, movie.voteCount.toString())
+        binding.popularityCount.text = getString(R.string.popularity_count, movie.popularity.toString())
+        binding.movieDescription.text = movie.overview
+        binding.genreNames.text = "${movie.genres.map { genre -> genre.name }}"
+        Glide.with(binding.moviePoster)
+            .load("https://image.tmdb.org/t/p/original/${movie.posterPath}")
+            .into(binding.moviePoster)
     }
 
     private fun displayMovie() {
         binding.progressBar.visibility = View.VISIBLE
         viewModel.getMovie().observe(this, {
             Log.d(TAG, "$it")
-            binding.movieTitle.text = it.title
-            "${it.voteCount} Likes".also { text -> binding.likeCount.text = text }
-            "${it.popularity} Watched".also { text -> binding.popularityCount.text = text }
-            binding.movieDescription.text = it.overview
-            binding.genreNames.text = "${it.genres.map { genre -> genre.name }}"
-            Glide.with(binding.moviePoster)
-                .load("https://image.tmdb.org/t/p/original/${it.posterPath}")
-                .into(binding.moviePoster)
+            bindMovie(it)
             binding.progressBar.visibility = View.INVISIBLE
         })
     }
 
     private fun displaySimilarMovies() {
+        similarMoviesRecyclerViewInit()
         viewModel.getSimilarMovies().observe(this, {
             adapter.getSimilarMovieList(it)
             Log.d(TAG, "$it")
